@@ -1,0 +1,13 @@
+# 覆盖spring‐boot‐http.yaml的项目 
+server:
+  servlet:
+    context‐path: /user
+# 覆盖spring‐boot‐starter‐druid.yaml的项目
+spring:
+  datasource:
+    druid:
+      db-type: com.alibaba.druid.pool.DruidDataSource
+      driverClassName: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+      url: jdbc:log4jdbc:mysql://${DB_HOST:192.168.2.250}:${DB_PORT:3306}/${DB_NAME:shanjupay_uaa}?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+      username: ${DB_USER:root}
+      password: ${DB_PWD:123456}

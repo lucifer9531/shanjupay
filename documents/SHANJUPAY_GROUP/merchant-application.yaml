@@ -1,0 +1,11 @@
+#覆盖访问路径 
+server:
+  servlet:
+    context‐path: /merchant
+#启用Swagger 
+swagger:
+  enable: true
+sms:
+  url: "http://127.0.0.1:56085"
+  effectiveTime: 600
+ 

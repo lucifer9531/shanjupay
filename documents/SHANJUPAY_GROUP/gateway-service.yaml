@@ -1,0 +1,45 @@
+# 路由规则
+zuul:
+  retryable: true
+  add-host-header: true
+  ignored-services: "*"
+  sensitive-headers: "*"
+  routes:
+    operation-application:
+      path: /operation/**
+      stripPrefix: false
+    merchant-application:
+      path: /merchant/**
+      stripPrefix: false
+    uaa-service:
+      path: /uaa/**
+      stripPrefix: false
+
+feign:
+  hystrix:
+    enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: ["text/xml", "application/json"]
+      min-request-size: 2048
+    response:
+      enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thred:
+            timeoutInMilliseconds: 9300
+        timeout:
+          enabled: true
+ribbon:
+  nacos:
+    enabled: true
+  ConnectTimeout: 3000
+  ReadTimeout: 20000
+  OkToRetryOnAllOperations: false
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 1
